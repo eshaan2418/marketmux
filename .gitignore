@@ -1,0 +1,11 @@
+bin/
+*.mmcap.gz
+data/
+research/.venv/
+__pycache__/
+*.prof
+*.test
+testdata/fuzz/*/corpus/
+NOTES.md
+.DS_Store
+cmd/dbgtmp/

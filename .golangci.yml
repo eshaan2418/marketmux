@@ -1,0 +1,17 @@
+version: "2"
+linters:
+  default: standard
+  enable:
+    - bodyclose
+    - errorlint
+    - gocritic
+    - misspell
+    - prealloc
+    - unconvert
+  settings:
+    gocritic:
+      disabled-checks: [ifElseChain, singleCaseSwitch, appendAssign]
+  exclusions:
+    rules:
+      - path: _test\.go
+        linters: [errcheck, prealloc]

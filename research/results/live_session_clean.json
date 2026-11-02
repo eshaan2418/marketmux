@@ -1,0 +1,215 @@
+{
+  "capture_dropped_by_cap": 0,
+  "capture_records": 349775,
+  "engine": {
+    "Frames": 349775,
+    "Events": 350370,
+    "DecodeErrors": 0,
+    "Ignored": 146,
+    "Snapshots": 23,
+    "Deltas": 334625,
+    "Trades": 12128,
+    "ChecksumOK": 141589,
+    "ChecksumFail": 0,
+    "SeqGaps": 0,
+    "VenueCrossed": 3,
+    "BitstampStale": 8,
+    "BitstampBuffer": 19,
+    "Resyncs": 3,
+    "Disconnects": 0,
+    "Published": 44620,
+    "CrossedUpdates": 40430,
+    "OutputHash": 12947423097561375017,
+    "ResyncByReason": {
+      "venue_crossed": 3
+    }
+  },
+  "engine_ns_per_frame": {
+    "count": 349775,
+    "p50": 1709,
+    "p90": 6963,
+    "p99": 55071,
+    "p99_9": 243711,
+    "p99_99": 626687,
+    "max": 9076735
+  },
+  "engine_start_to_publish_ns": {
+    "count": 44620,
+    "p50": 2459,
+    "p90": 22463,
+    "p99": 194815,
+    "p99_9": 546815,
+    "p99_99": 1637375,
+    "max": 9060351
+  },
+  "frames_per_second": 582.9603272189381,
+  "hub_published": 44620,
+  "hub_shard_drops": 0,
+  "mode": "live",
+  "receive_to_engine_queue_ns": {
+    "count": 349775,
+    "p50": 11751,
+    "p90": 45791,
+    "p99": 556543,
+    "p99_9": 6619135,
+    "p99_99": 15523839,
+    "max": 20905983
+  },
+  "receive_to_publish_ns": {
+    "count": 44620,
+    "p50": 18543,
+    "p90": 67135,
+    "p99": 600063,
+    "p99_9": 6479871,
+    "p99_99": 14131199,
+    "max": 19922943
+  },
+  "sessions": {
+    "bitstamp": {
+      "bytes": 3475100,
+      "connects": 1,
+      "frames": 8233,
+      "resync_rate_limited": 0,
+      "resync_requests": 3
+    },
+    "coinbase": {
+      "bytes": 17544854,
+      "connects": 1,
+      "frames": 45118,
+      "resync_rate_limited": 0,
+      "resync_requests": 0
+    },
+    "gemini": {
+      "bytes": 12430606,
+      "connects": 1,
+      "frames": 153027,
+      "resync_rate_limited": 0,
+      "resync_requests": 0
+    },
+    "kraken": {
+      "bytes": 27622814,
+      "connects": 1,
+      "frames": 143385,
+      "resync_rate_limited": 0,
+      "resync_requests": 0
+    }
+  },
+  "symbols": [
+    {
+      "symbol": "BTC-USD",
+      "updates": 10217,
+      "observed_seconds": 599.483342999,
+      "crossed_time_fraction": 0.9999172010639167,
+      "crossed_update_fraction": 0.9999021239111285,
+      "cross_bps_p50": 2.47,
+      "cross_bps_p90": 3.69,
+      "cross_bps_p99": 5.57,
+      "cross_bps_max": 7.52,
+      "best_bid_time_share": {
+        "bitstamp": 0.09946959609201264,
+        "coinbase": 0.0012430739464286385,
+        "gemini": 0.8988760763881622,
+        "kraken": 0.00041125357339646924
+      },
+      "best_ask_time_share": {
+        "bitstamp": 0.004716612354656728,
+        "coinbase": 0.520715022806765,
+        "gemini": 0.0009765822500942725,
+        "kraken": 0.473591782588484
+      }
+    },
+    {
+      "symbol": "ETH-USD",
+      "updates": 12845,
+      "observed_seconds": 599.425435583,
+      "crossed_time_fraction": 0.9990483031631029,
+      "crossed_update_fraction": 0.9950175165434021,
+      "cross_bps_p50": 1.55,
+      "cross_bps_p90": 3.06,
+      "cross_bps_p99": 14.98,
+      "cross_bps_max": 17.39,
+      "best_bid_time_share": {
+        "bitstamp": 0.09312299498053381,
+        "coinbase": 0.060668044641166305,
+        "gemini": 0.8297510000493309,
+        "kraken": 0.01645796032896904
+      },
+      "best_ask_time_share": {
+        "bitstamp": 0.061672361797668815,
+        "coinbase": 0.3093318494262085,
+        "gemini": 0.013650420566557716,
+        "kraken": 0.615345368209565
+      }
+    },
+    {
+      "symbol": "LTC-USD",
+      "updates": 4088,
+      "observed_seconds": 599.239539583,
+      "crossed_time_fraction": 0.12927687824623266,
+      "crossed_update_fraction": 0.17318982387475537,
+      "cross_bps_p50": 0.54,
+      "cross_bps_p90": 2.36,
+      "cross_bps_p99": 7.26,
+      "cross_bps_max": 7.26,
+      "best_bid_time_share": {
+        "bitstamp": 0.2615884397065694,
+        "coinbase": 0.11693975606610318,
+        "gemini": 0.0043247405616849265,
+        "kraken": 0.6171470636656425
+      },
+      "best_ask_time_share": {
+        "bitstamp": 0.04692185097393008,
+        "coinbase": 0.4922012460780674,
+        "gemini": 0.24568917454354294,
+        "kraken": 0.21518772840445957
+      }
+    },
+    {
+      "symbol": "SOL-USD",
+      "updates": 8667,
+      "observed_seconds": 599.563916125,
+      "crossed_time_fraction": 0.9892775467834197,
+      "crossed_update_fraction": 0.9710395754009461,
+      "cross_bps_p50": 2.03,
+      "cross_bps_p90": 4.07,
+      "cross_bps_p99": 9.44,
+      "cross_bps_max": 16.52,
+      "best_bid_time_share": {
+        "bitstamp": 0.11107670724319475,
+        "coinbase": 0.06480930131709066,
+        "gemini": 0.8021029018343011,
+        "kraken": 0.0220110896054135
+      },
+      "best_ask_time_share": {
+        "bitstamp": 0.6838526618595213,
+        "coinbase": 0.06043479363832437,
+        "gemini": 0.06591755869237519,
+        "kraken": 0.18979498580977916
+      }
+    },
+    {
+      "symbol": "XRP-USD",
+      "updates": 8803,
+      "observed_seconds": 599.387736042,
+      "crossed_time_fraction": 0.9903473297565191,
+      "crossed_update_fraction": 0.9438827672384414,
+      "cross_bps_p50": 1.84,
+      "cross_bps_p90": 3.62,
+      "cross_bps_p99": 11.99,
+      "cross_bps_max": 14.57,
+      "best_bid_time_share": {
+        "bitstamp": 0.039519148653952764,
+        "coinbase": 0.011654139854657497,
+        "gemini": 0.8660847322285293,
+        "kraken": 0.0827419792628604
+      },
+      "best_ask_time_share": {
+        "bitstamp": 0.4487121570588059,
+        "coinbase": 0.2908670245528407,
+        "gemini": 0.01267105699751557,
+        "kraken": 0.24774976139083785
+      }
+    }
+  ],
+  "wall_seconds": 599.997947834
+}

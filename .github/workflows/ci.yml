@@ -1,0 +1,45 @@
+name: CI
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - run: go build ./...
+      - run: go vet ./...
+      - name: Test (race detector)
+        run: go test -race -count=1 ./...
+      - name: Benchmarks (smoke, shared runner; informational)
+        run: go test -run '^$' -bench . -benchtime 2000x -benchmem ./internal/...
+
+  fuzz:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - run: go test -run '^$' -fuzz FuzzParseFixed -fuzztime 45s ./internal/model/
+      - run: go test -run '^$' -fuzz FuzzDecoders -fuzztime 45s ./internal/venue/
+      - run: go test -run '^$' -fuzz FuzzDecodeBatch -fuzztime 30s ./internal/server/
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - uses: golangci/golangci-lint-action@v8
+        with:
+          version: latest

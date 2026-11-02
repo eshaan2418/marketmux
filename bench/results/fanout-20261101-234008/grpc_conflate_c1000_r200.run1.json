@@ -1,0 +1,73 @@
+{
+  "alloc_bytes_per_update": 1394415.1326915028,
+  "client_full_parse": false,
+  "clients": 1000,
+  "duration_s": 12,
+  "encode_once": true,
+  "engine": {
+    "Frames": 3000,
+    "Events": 3000,
+    "DecodeErrors": 0,
+    "Ignored": 0,
+    "Snapshots": 5,
+    "Deltas": 2995,
+    "Trades": 0,
+    "ChecksumOK": 0,
+    "ChecksumFail": 0,
+    "SeqGaps": 0,
+    "VenueCrossed": 0,
+    "CrossedHealed": 0,
+    "BitstampStale": 0,
+    "BitstampBuffer": 0,
+    "Resyncs": 0,
+    "Disconnects": 0,
+    "Published": 2987,
+    "CrossedUpdates": 0,
+    "OutputHash": 14669738527379349070,
+    "ResyncByReason": {}
+  },
+  "fast_clients": {
+    "closed_by_server": 0,
+    "latency_ns": {
+      "count": 2412692,
+      "p50": 584056831,
+      "p90": 2961178623,
+      "p99": 7700742143,
+      "p99_9": 11802771455,
+      "p99_99": 12708741119,
+      "max": 13379829759
+    },
+    "msgs_per_sec": 201057.66666666666,
+    "received": 2412692,
+    "seq_gaps_observed": 581
+  },
+  "frames_measured": 2400,
+  "frames_per_sec": 200,
+  "gc_cycles": 5,
+  "gomaxprocs": 18,
+  "interval_ms": 0,
+  "policy": "conflate",
+  "shard_drops": 0,
+  "slow": {
+    "closed_by_server": 0,
+    "latency_ns": {
+      "count": 0,
+      "p50": 0,
+      "p90": 0,
+      "p99": 0,
+      "p99_9": 0,
+      "p99_99": 0,
+      "max": 0
+    },
+    "msgs_per_sec": 0,
+    "received": 0,
+    "seq_gaps_observed": 0
+  },
+  "slow_clients": 0,
+  "slow_sleep_ms": 50,
+  "source": "synthetic",
+  "target_rate": 200,
+  "transport": "grpc",
+  "updates_per_sec": 199.08333333333334,
+  "updates_published": 2389
+}

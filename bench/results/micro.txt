@@ -1,0 +1,82 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/eshaan2418/marketmux/internal/book
+cpu: Apple M5 Pro
+BenchmarkApplyDeltaNearTop-18      	29579872	        41.68 ns/op	       0 B/op	       0 allocs/op
+BenchmarkApplyDeltaNearTop-18      	28933120	        40.47 ns/op	       0 B/op	       0 allocs/op
+BenchmarkApplyDeltaNearTop-18      	28788858	        40.06 ns/op	       0 B/op	       0 allocs/op
+BenchmarkApplyDeltaNearTop-18      	30152362	        41.42 ns/op	       0 B/op	       0 allocs/op
+BenchmarkApplyDeltaNearTop-18      	27414811	        41.71 ns/op	       0 B/op	       0 allocs/op
+BenchmarkReferenceMapNearTop-18    	 2235704	       543.9 ns/op	     129 B/op	       0 allocs/op
+BenchmarkReferenceMapNearTop-18    	 2234137	       536.8 ns/op	     129 B/op	       0 allocs/op
+BenchmarkReferenceMapNearTop-18    	 2201370	       535.4 ns/op	     129 B/op	       0 allocs/op
+BenchmarkReferenceMapNearTop-18    	 2257461	       531.3 ns/op	     129 B/op	       0 allocs/op
+BenchmarkReferenceMapNearTop-18    	 2273745	       534.7 ns/op	     129 B/op	       0 allocs/op
+PASS
+ok  	github.com/eshaan2418/marketmux/internal/book	14.978s
+PASS
+ok  	github.com/eshaan2418/marketmux/internal/capture	0.122s
+?   	github.com/eshaan2418/marketmux/internal/fakevenue	[no test files]
+goos: darwin
+goarch: arm64
+pkg: github.com/eshaan2418/marketmux/internal/fanout
+cpu: Apple M5 Pro
+BenchmarkPublish1000Conflate-18    	10714233	       100.7 ns/op	      14 B/op	       0 allocs/op
+BenchmarkPublish1000Conflate-18    	11752318	        86.41 ns/op	      12 B/op	       0 allocs/op
+BenchmarkPublish1000Conflate-18    	11029225	        95.63 ns/op	      13 B/op	       0 allocs/op
+BenchmarkPublish1000Conflate-18    	19002148	        97.00 ns/op	       9 B/op	       0 allocs/op
+BenchmarkPublish1000Conflate-18    	17281914	        86.62 ns/op	      10 B/op	       0 allocs/op
+PASS
+ok  	github.com/eshaan2418/marketmux/internal/fanout	7.939s
+PASS
+ok  	github.com/eshaan2418/marketmux/internal/integration	0.419s
+PASS
+ok  	github.com/eshaan2418/marketmux/internal/model	0.073s
+goos: darwin
+goarch: arm64
+pkg: github.com/eshaan2418/marketmux/internal/pipeline
+cpu: Apple M5 Pro
+BenchmarkEngineSyntheticDelta-18    	 1859572	       644.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkEngineSyntheticDelta-18    	 1848961	       650.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkEngineSyntheticDelta-18    	 1887003	       646.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkEngineSyntheticDelta-18    	 1831542	       661.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkEngineSyntheticDelta-18    	 1791157	       659.6 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/eshaan2418/marketmux/internal/pipeline	9.753s
+goos: darwin
+goarch: arm64
+pkg: github.com/eshaan2418/marketmux/internal/server
+cpu: Apple M5 Pro
+BenchmarkAppendJSON-18    	 8662581	       139.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkAppendJSON-18    	 8599414	       136.5 ns/op	       0 B/op	       0 allocs/op
+BenchmarkAppendJSON-18    	 8878579	       140.2 ns/op	       0 B/op	       0 allocs/op
+BenchmarkAppendJSON-18    	 8373628	       139.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkAppendJSON-18    	 8740294	       138.9 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/eshaan2418/marketmux/internal/server	7.111s
+goos: darwin
+goarch: arm64
+pkg: github.com/eshaan2418/marketmux/internal/venue
+cpu: Apple M5 Pro
+BenchmarkDecodeKrakenUpdate-18        	 3030406	       391.2 ns/op	 552.14 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeKrakenUpdate-18        	 3160268	       379.6 ns/op	 569.02 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeKrakenUpdate-18        	 3230833	       371.9 ns/op	 580.81 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeKrakenUpdate-18        	 2952346	       402.2 ns/op	 537.07 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeKrakenUpdate-18        	 3275407	       371.4 ns/op	 581.61 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeCoinbaseL2Update-18    	 4716919	       262.8 ns/op	 593.51 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeCoinbaseL2Update-18    	 4480402	       260.3 ns/op	 599.34 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeCoinbaseL2Update-18    	 4693064	       262.1 ns/op	 595.28 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeCoinbaseL2Update-18    	 4472780	       256.0 ns/op	 609.40 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeCoinbaseL2Update-18    	 4761114	       264.9 ns/op	 588.84 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeBitstampDiff-18        	 2404660	       463.3 ns/op	 580.61 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeBitstampDiff-18        	 2519763	       474.8 ns/op	 566.53 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeBitstampDiff-18        	 2581546	       462.6 ns/op	 581.43 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeBitstampDiff-18        	 2625831	       465.3 ns/op	 578.14 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeBitstampDiff-18        	 2635350	       454.2 ns/op	 592.23 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeGeminiUpdate-18        	 6928614	       173.3 ns/op	 479.03 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeGeminiUpdate-18        	 6649207	       173.0 ns/op	 479.70 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeGeminiUpdate-18        	 7041627	       168.3 ns/op	 493.22 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeGeminiUpdate-18        	 7094826	       176.4 ns/op	 470.55 MB/s	       0 B/op	       0 allocs/op
+BenchmarkDecodeGeminiUpdate-18        	 6221115	       174.5 ns/op	 475.67 MB/s	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/eshaan2418/marketmux/internal/venue	31.662s
