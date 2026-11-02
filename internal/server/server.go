@@ -124,7 +124,7 @@ func (s *Server) handleWS(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		return
 	}
-	defer c.CloseNow()
+	defer func() { _ = c.CloseNow() }()
 	ctx := c.CloseRead(r.Context()) // we never read; this handles pings/close frames
 	cl := s.Hub.Subscribe(pol, syms, ql)
 	defer s.Hub.Unsubscribe(cl)
@@ -145,7 +145,7 @@ func (s *Server) handleWS(w http.ResponseWriter, r *http.Request) {
 		return buf, c.Write(ctx, websocket.MessageText, buf)
 	})
 	if cl.Disconnect.Load() {
-		c.Close(websocket.StatusPolicyViolation, "slow consumer")
+		_ = c.Close(websocket.StatusPolicyViolation, "slow consumer")
 	}
 }
 

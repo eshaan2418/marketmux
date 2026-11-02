@@ -45,13 +45,11 @@ var t0 = time.Now()
 func now() int64 { return time.Since(t0).Nanoseconds() }
 
 type clientStats struct {
-	mu      sync.Mutex
-	h       *hdrhistogram.Histogram
-	n       atomic.Int64
-	slowN   atomic.Int64
-	gaps    atomic.Int64
-	closed  atomic.Int64
-	slowLag *hdrhistogram.Histogram
+	mu     sync.Mutex
+	h      *hdrhistogram.Histogram
+	n      atomic.Int64
+	gaps   atomic.Int64
+	closed atomic.Int64
 }
 
 func main() {
@@ -125,7 +123,7 @@ func main() {
 	} else {
 		hs := &http.Server{Handler: srv.HTTPHandler(), ReadHeaderTimeout: 5 * time.Second}
 		go func() { _ = hs.Serve(lis) }()
-		defer hs.Close()
+		defer func() { _ = hs.Close() }()
 		addr = "ws://" + lis.Addr().String() + "/ws?policy=" + *policy + fmt.Sprintf("&queue=%d", *queueLen)
 		if *wsIntv > 0 {
 			addr += "&interval=" + wsIntv.String()
@@ -271,7 +269,7 @@ func runWS(ctx context.Context, url string, st *clientStats, sleep time.Duration
 		return
 	}
 	c.SetReadLimit(1 << 20)
-	defer c.CloseNow()
+	defer func() { _ = c.CloseNow() }()
 	connected.Add(1)
 	last := map[string]uint64{}
 	var parser fastjson.Parser // per client: fastjson parsers are not goroutine-safe
@@ -389,7 +387,7 @@ func runStalledWS(ctx context.Context, url string, connected *atomic.Int64) {
 	if err != nil {
 		return
 	}
-	defer c.CloseNow()
+	defer func() { _ = c.CloseNow() }()
 	connected.Add(1)
 	<-ctx.Done()
 }
@@ -400,7 +398,7 @@ func runGRPC(ctx context.Context, addr, policy string, ql uint32, st *clientStat
 	if err != nil {
 		return
 	}
-	defer conn.Close()
+	defer func() { _ = conn.Close() }()
 	stream, err := conn.NewStream(ctx, server.GRPCStreamDesc, server.StreamMethod)
 	if err != nil {
 		return

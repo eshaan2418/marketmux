@@ -192,7 +192,7 @@ func ReadAll(dir string) ([]venue.Frame, error) {
 		}
 		r, err := NewReader(f)
 		if err != nil {
-			f.Close()
+			_ = f.Close()
 			return nil, fmt.Errorf("%s: %w", p, err)
 		}
 		for {
@@ -201,12 +201,12 @@ func ReadAll(dir string) ([]venue.Frame, error) {
 				if errors.Is(err, io.EOF) {
 					break
 				}
-				f.Close()
+				_ = f.Close()
 				return nil, err
 			}
 			out = append(out, fr)
 		}
-		f.Close()
+		_ = f.Close()
 	}
 	return out, nil
 }

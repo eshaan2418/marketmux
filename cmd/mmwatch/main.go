@@ -33,6 +33,14 @@ func f(s string, places int) string {
 }
 
 func main() {
+	if err := run(); err != nil {
+		fmt.Fprintln(os.Stderr, "dial:", err)
+		os.Exit(1)
+	}
+}
+
+// run holds the body of main so its deferred cleanups execute before main calls os.Exit.
+func run() error {
 	url := flag.String("url", "ws://127.0.0.1:8080/ws?policy=conflate", "marketmux WS endpoint")
 	every := flag.Duration("every", 250*time.Millisecond, "refresh interval")
 	dur := flag.Duration("duration", 0, "exit after this long")
@@ -45,10 +53,9 @@ func main() {
 	}
 	c, _, err := websocket.Dial(ctx, *url, nil)
 	if err != nil {
-		fmt.Fprintln(os.Stderr, "dial:", err)
-		os.Exit(1)
+		return err
 	}
-	defer c.CloseNow()
+	defer func() { _ = c.CloseNow() }()
 	rows := map[string]*row{}
 	msgs := 0
 	tick := time.NewTicker(*every)
@@ -69,7 +76,7 @@ func main() {
 		select {
 		case b, ok := <-in:
 			if !ok {
-				return
+				return nil
 			}
 			arr, err := p.ParseBytes(b)
 			if err != nil {
@@ -98,7 +105,7 @@ func main() {
 		case <-tick.C:
 			render(rows, msgs)
 		case <-ctx.Done():
-			return
+			return nil
 		}
 	}
 }
@@ -134,5 +141,5 @@ func render(rows map[string]*row, msgs int) {
 		}
 		sb.WriteString("\n")
 	}
-	os.Stdout.WriteString(sb.String())
+	_, _ = os.Stdout.WriteString(sb.String())
 }

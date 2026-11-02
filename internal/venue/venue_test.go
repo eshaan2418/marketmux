@@ -1,6 +1,7 @@
 package venue
 
 import (
+	"errors"
 	"hash/crc32"
 	"testing"
 
@@ -26,7 +27,7 @@ func collect(t testing.TB, d Decoder, kind FrameKind, payload string) []model.Ev
 		c.Asks = append([]model.Level(nil), e.Asks...)
 		out = append(out, c)
 	})
-	if err != nil && err != ErrIgnored {
+	if err != nil && !errors.Is(err, ErrIgnored) {
 		t.Fatalf("decode %s: %v", payload, err)
 	}
 	return out

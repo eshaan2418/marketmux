@@ -8,7 +8,6 @@ import (
 	"math/rand"
 	"net/http"
 	"strconv"
-	"sync"
 	"sync/atomic"
 	"time"
 
@@ -117,7 +116,6 @@ type Server struct {
 	dropNext atomic.Bool  // close the next connection after the snapshot
 	Conns    atomic.Int64
 	Sent     atomic.Int64
-	mu       sync.Mutex
 }
 
 // InjectGap makes the next connection skip one sequence number after n deltas.
@@ -132,7 +130,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		return
 	}
-	defer c.CloseNow()
+	defer func() { _ = c.CloseNow() }()
 	s.Conns.Add(1)
 	ctx := c.CloseRead(r.Context())
 	g := NewGenerator(s.Seed, s.Symbols)

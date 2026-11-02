@@ -27,7 +27,6 @@ type Analytics struct {
 type symAnalytics struct {
 	lastNs        int64
 	lastCrossed   bool
-	lastCrossBps  float64
 	totalNs       int64
 	crossedNs     int64
 	crossBps      *hdrhistogram.Histogram // cross size in 0.01 bps units, sampled per update
@@ -105,7 +104,7 @@ type SymbolReport struct {
 func (a *Analytics) Report() []SymbolReport {
 	a.mu.Lock()
 	defer a.mu.Unlock()
-	var out []SymbolReport
+	var out []SymbolReport //nolint:prealloc // must stay nil when empty: stats JSON reports "null", not "[]"
 	for name, s := range a.sym {
 		r := SymbolReport{Symbol: name, Updates: s.updates, ObservedSeconds: float64(s.totalNs) / 1e9,
 			BestBidTimeShare: map[string]float64{}, BestAskTimeShare: map[string]float64{}}

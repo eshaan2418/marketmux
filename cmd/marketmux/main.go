@@ -269,13 +269,13 @@ func replay(ctx context.Context, dir string, speed float64, out chan<- venue.Fra
 		}
 		r, err := capture.NewReader(f)
 		if err != nil {
-			f.Close()
+			_ = f.Close()
 			return err
 		}
 		for {
 			var fr venue.Frame
 			if err := r.Next(&fr, true); err != nil {
-				f.Close()
+				_ = f.Close()
 				if errors.Is(err, io.EOF) {
 					break
 				}
@@ -290,7 +290,7 @@ func replay(ctx context.Context, dir string, speed float64, out chan<- venue.Fra
 					select {
 					case <-time.After(d):
 					case <-ctx.Done():
-						f.Close()
+						_ = f.Close()
 						return ctx.Err()
 					}
 				}
@@ -298,7 +298,7 @@ func replay(ctx context.Context, dir string, speed float64, out chan<- venue.Fra
 			select {
 			case out <- fr:
 			case <-ctx.Done():
-				f.Close()
+				_ = f.Close()
 				return ctx.Err()
 			}
 		}

@@ -113,7 +113,7 @@ func main() {
 		TradeVsOthersMidBpsP25, P50, P75     float64
 		MidVsOthersMidBpsP25, MidP50, MidP75 float64
 	}
-	var rows []row
+	var rows []row //nolint:prealloc // must stay nil when empty: JSON output is "null", not "[]"
 	keys := make([]string, 0, len(midDev))
 	for k := range midDev {
 		keys = append(keys, k)

@@ -186,8 +186,8 @@ func TestConsolidatedMatchesBruteForce(t *testing.T) {
 	}
 	for i := 0; i < 5000; i++ {
 		v := venues[rng.Intn(2)]
-		switch r := rng.Intn(10); {
-		case r == 0:
+		switch rng.Intn(10) {
+		case 0:
 			e.Handle(&venue.Frame{Kind: venue.FrameDisconnected, Venue: v})
 		default:
 			e.Handle(snap(v, 1000+rng.Intn(20)))

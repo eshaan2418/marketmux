@@ -116,7 +116,7 @@ func (s *Session) HTTPGet(ctx context.Context, url string) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("GET %s: %s", url, resp.Status)
 	}
@@ -174,7 +174,7 @@ func (s *Session) runOnce(ctx context.Context) error {
 		s.mu.Lock()
 		s.conn = nil
 		s.mu.Unlock()
-		c.CloseNow()
+		_ = c.CloseNow()
 	}()
 	s.Connects.Add(1)
 	s.Emit(ctx, FrameConnected, meta)
@@ -277,7 +277,7 @@ func KrakenSpec() Spec {
 			if err != nil {
 				return nil, err
 			}
-			defer resp.Body.Close()
+			defer func() { _ = resp.Body.Close() }()
 			var body struct {
 				Result map[string]struct {
 					WSName       string `json:"wsname"`
@@ -361,7 +361,7 @@ func BitstampSpec() Spec {
 		Venue: model.Bitstamp,
 		URL:   "wss://ws.bitstamp.net",
 		Subscribe: func(syms []Symbol) [][]byte {
-			var out [][]byte
+			out := make([][]byte, 0, 2*len(syms))
 			for _, s := range syms {
 				out = append(out,
 					jsonMsg(map[string]any{"event": "bts:subscribe", "data": map[string]string{"channel": "diff_order_book_" + s.Bitstamp}}),
